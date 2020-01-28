@@ -1,0 +1,59 @@
+This is just a first shared document to get the main topics quickly sorted out and set the main direction of our contribution.
+When editing or commenting please add your name.  
+
+Mandatory information for signing up
+Session Format (sorted by our priority):
+1 Regular Talk
+2 Lightning Talk
+3 Poster
+Tracks (in bold the ones I'd link the topic to, please tell me where you see it):
+- R World: covers everything related to the world of R, such as education, community, and the R ecosystem.
+- Data Visualization & Shiny: covers innovative visualization methods, as well as Shiny applications and the Rmarkdown world
+- R in Production: Anything related to production-ready projects, such as IT and infrastructure, efficient programming, and R at scale. (MR: I think this is the most feasible slot)
+- Machine Learning & Models: covers all the development in statistical models, Machine Learning, and statistics in general.
+- R in Life Sciences: Applications and development of tools in biology, genomics, biostatistics, and bioinformatics. 
+- R Applications: Applications of R in fields such as social goods, finance, marketing, transportation, and many more.
+CHOICE: R in Production
+Keywords (1-3):
+api, big data, openEO
+Feel free to come up with better ideas (EP suggests: spatial data, satellite imagery, cloud computing) 
+Link:
+https://openeo.org/
+Co-authors:
+Florian Lahn, Matthias Mohr, Mattia Rossi, Alexander Jacob, Edzer Pebesma
+am I missing somebody so far? feel free to add.
+First time presenting this:
+Has the r-client been presented somewhere before that should be taken into account?
+
+Brainstorming for contents
+General Focus:
+What should be the main focus of the talk? What suits audience of eRum best? How technical should the talk be?
+- Usability of the R-client / How to use the package -> Workshop flair
+- General concept of openEO and benefits related to the approach -> General explanation of the concept
+- Explanation of how the R-client works -> Technical details about how the R-client is built up
+- Showcase a use case and how the R-client lets the user connect to openEO -> How would an R user get in touch with openEO (I prefer this)
+
+Storyline:
+Possible structure of the talk. This is a structure that I personally can relate to and would feel comfortable with
+- Research Question: EO Question (e.g. how has snowcover evolved in the last 10 years over the alps) 
+-> overcoming usual obstacles via openEO: fast, in the cloud, scalable / using large amounts of data, possibly compare backends, portability, language agnostic
+- Framework openEO: Introduce openEO concept and showing the benefits it brings in comparison to classical local approach (see above)
+- Where is the data available: Show example of publicly available backends and data (e.g. vito, eodc, eurac, gge)
+- How do I as an R user get in touch with the data: Introduce the r-client
+- How does the R client work: Explain concept 
+- Show an example: Show an process graph and execute it
+- Acknowledgements and Resources
+
+Abstract:
+Title: 
+Earth observation data are images collected by satellites orbiting the Earth. The growing amount of new satellites and the continuation of established missions lead to a rapid increase of available data that can be used for analysing the state of the Earth's surface.
+With the opening of global archives of earth observation data streams from satellites we have arrived at a richness of operationally available satellite images over the whole globe, that has never been available before. This creates huge opportunities for research and businesses, being able to exploit the full temporal and spatial domain of those observations in a powerful manner. In turn, this development challenges the established ways of data management and processing capacities. In a nutshell, earth observation data is becoming too large to be downloaded for local analysis. The solution to this is to store these data in the cloud, on compute back-ends, process them there, and browse the results or download resulting figures or numbers. As a consequence, a growing number of unrelated cloud services and customized solutions are developed, leading to a fragmented landscape of specialized solutions. This is limiting portability and reproducibility of workflows across data provider back-ends and increases complexity for the end user.
+OpenEO (https://openeo.org/), a Horizon 2020 project (grant 776242), addresses this problem by creating a unified API between service provider back-ends and client applications. This API provides a common language that defines interfaces for finding, accessing, processing and retrieving data. On the client side, libraries are developed in Python, R and JavaScript, to connect to big earth observation back-ends in a simple and unified way. Ultimately, this leaves space to develop applications with very different requirements, from web visualization to extensive time series analysis. All drivers both on client and back-end side are developed as open source software and can be found on the project’s Github group (https://github.com/Open-EO). 
+The openEO API provides definitions for data discovery, processing and especially chaining of defined processes integrated with user defined functions, data and result access via download and for commercial implementations a framework for managing user content and billing. A proof of concept shows the successful interaction and processing of different clients and back-ends (http://openeo.org/openeo/news/2018/03/17/poc.html). Currently the version 0.4 has been released providing first core processes following the latest spec. To ensure interoperability, data discovery is closely linked to other emerging standards like the spatial temporal asset catalogue STAC (https://github.com/radiantearth/stac-spec) and the web feature service in it’s latest development version 3.0 (WFS 3.0 - https://github.com/opengeospatial/WFS_FES). 
+The openEO R client serves as an entry point for end users willing to efficiently interact with big earth observation data. It is available as an R package (https://github.com/Open-EO/openeo-r-client) and integrates the functionalities of openEO into the R environment with its broad user base. This allows users to create scalable workflows on big data earth observation imagery which otherwise could not be processed in a local environment. The workflows are created in the R language and then translated into openEO process graphs which are processed on powerful cloud back-ends. This talk will show how to tackle a research question in the earth observation domain using the openEO API through the dedicated R client. The workflow which is created can further be applied to different back ends containing various data sources and processing capacities. Therefore the approach fosters scalable, efficient and reproducible programming in the R language and allows for integration in existing R based workflows.
+
+Mattia Rossi comments:
+- Yes, title is missing. I'd put it as simple as possible. If you want we can brainstorm about that tomorrow.
+- Maybe you could shorten the central part of the abstract by linking to the current OpenEO API (https://open-eo.github.io/openeo-api/v/0.4.2/) 
+- I would structure the last part similarly to the "Getting Started" page of the openeo-r-client or an equivalent documentation regarding core functionalities from metadata retrieval to process handling. This could mean something like "(i) we connect to to the database with ..., then can (ii) we access the metadata such as available collections and processes, before (iii) we apply the core functionalities ... (I think here the R-UDFs and the process_graph_builder come into play?).". Like this you present a workflow that is easier to understand as Edzer mentioned.
+- Consider mentioning the most important dependencies of the package (I think mostly "httr" and "jsonlite") to give an idea on how the data is accessed. At the end this should be readable for all the R-audience and including pieces others are able to understand, such as package structure and dependencies may facilitate the reader's flow.
